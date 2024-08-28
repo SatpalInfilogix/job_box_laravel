@@ -23,7 +23,7 @@
             value="save"
             :icon="$saveIcon ?? 'ti ti-transfer-in'"
         >
-            {{ $saveTitle ?? trans('core/base::forms.save') }}
+        {{ $saveTitle ?? trans('core/base::forms.save') }}
         </x-core::button>
     @endif
 

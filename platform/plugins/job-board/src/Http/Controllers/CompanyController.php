@@ -23,12 +23,12 @@ class CompanyController extends BaseController
     protected function breadcrumb(): Breadcrumb
     {
         return parent::breadcrumb()
-            ->add(trans('plugins/job-board::company.name'), route('companies.index'));
+            ->add(trans('Colleges'), route('companies.index'));
     }
 
     public function index(CompanyTable $table)
     {
-        $this->pageTitle(trans('plugins/job-board::company.name'));
+        $this->pageTitle(trans('Colleges'));
 
         return $table->renderTable();
     }
