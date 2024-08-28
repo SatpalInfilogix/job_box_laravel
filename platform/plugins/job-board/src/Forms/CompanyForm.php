@@ -41,7 +41,7 @@ class CompanyForm extends FormAbstract
             ->columns(12)
             ->addCustomField('tags', TagField::class)
             ->add('name', 'text', [
-                'label' => __('Company Name'),
+                'label' => __('College Name'),
                 'required' => true,
                 'attr' => [
                     'placeholder' => trans('core/base::forms.name_placeholder'),

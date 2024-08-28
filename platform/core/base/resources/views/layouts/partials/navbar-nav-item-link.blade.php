@@ -26,7 +26,11 @@ $name = Str::contains($name = $menu['name'], '::') ?  BaseHelper::clean(trans($n
     @endif
 
     <span @class(['nav-link-title text-truncate'])>
-        {!! $name !!}
+        @if($name === 'Companies')
+            Colleges
+        @else
+            {!! $name !!}
+        @endif
         {!! apply_filters(BASE_FILTER_APPEND_MENU_NAME, null, $menu['id']) !!}
     </span>
 </a>

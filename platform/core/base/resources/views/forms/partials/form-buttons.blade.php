@@ -3,6 +3,9 @@
 @endphp
 
 <div class="btn-list">
+    @if (Route::is('companies.edit'))
+        <a href="#" class="btn btn-primary">Add new page</a>
+    @endif
     <x-core::button
         type="submit"
         value="apply"
@@ -20,7 +23,7 @@
             value="save"
             :icon="$saveIcon ?? 'ti ti-transfer-in'"
         >
-            {{ $saveTitle ?? trans('core/base::forms.save') }}
+        {{ $saveTitle ?? trans('core/base::forms.save') }}
         </x-core::button>
     @endif
 
