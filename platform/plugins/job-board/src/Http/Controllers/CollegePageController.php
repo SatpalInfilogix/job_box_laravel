@@ -9,14 +9,13 @@ use Botble\Base\Facades\Assets;
 use Botble\Base\Http\Actions\DeleteResourceAction;
 use Botble\Base\Http\Controllers\BaseController;
 use Botble\Base\Supports\Breadcrumb;
-use Botble\JobBoard\Forms\CollegePageForm;
 use Botble\JobBoard\Http\Requests\AjaxCompanyRequest;
 use Botble\JobBoard\Http\Requests\CompanyRequest;
 use Botble\JobBoard\Http\Resources\CompanyResource;
 use Botble\JobBoard\Models\Company;
 use Botble\JobBoard\Services\StoreCompanyAccountService;
 use Botble\Page\Tables\CollegePageTable;
-use Illuminate\Http\Request;
+use Botble\Page\Forms\PageForm;
 
 class CollegePageController extends BaseController
 {
@@ -26,11 +25,19 @@ class CollegePageController extends BaseController
             ->add(trans('plugins/job-board::company.name'), route('companies.index'));
     }
 
-    public function index(CollegePageTable $pageTable)
-    {
+    public function index(CollegePageTable $pageTable, $college)
+    {      
+        $pageTable->setCollege($college);
+        $pageTable->setup();
         $this->pageTitle(trans('plugins/job-board::college.name'));
 
         return $pageTable->renderTable();
+    }
+
+    public function create($college){
+        $this->pageTitle(trans('packages/page::pages.create'));
+
+        return PageForm::create($college)->renderForm();
     }
 
 }

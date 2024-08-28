@@ -208,11 +208,13 @@ AdminHelper::registerRoutes(function () {
                 'permission' => 'companies.index',
             ])->wherePrimaryKey();
 
-
-
-            /* Create pages for colleges */
-            Route::resource('{id}/pages', 'CollegePageController');
         });
+
+        Route::group(['prefix' => 'colleges/{college}/pages', 'as' => 'college.pages.'], function ($college) {
+            // Create pages for colleges
+            Route::resource('', 'CollegePageController')->parameters(['pages' => 'page']);
+        });
+        
 
         Route::get('ajax/companies/{id}', [
             'as' => 'ajax.company.show',
