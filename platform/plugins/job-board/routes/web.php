@@ -187,7 +187,7 @@ AdminHelper::registerRoutes(function () {
             Route::resource('', 'PackageController')->parameters(['' => 'package']);
         });
 
-        Route::group(['prefix' => 'companies', 'as' => 'companies.'], function () {
+        Route::group(['prefix' => 'colleges', 'as' => 'companies.'], function () {
             Route::resource('', 'CompanyController')->parameters(['' => 'company']);
 
             Route::get('list', [
@@ -207,6 +207,11 @@ AdminHelper::registerRoutes(function () {
                 'uses' => 'CompanyController@analytics',
                 'permission' => 'companies.index',
             ])->wherePrimaryKey();
+
+
+
+            /* Create pages for colleges */
+            Route::resource('{id}/pages', 'CollegePageController');
         });
 
         Route::get('ajax/companies/{id}', [
