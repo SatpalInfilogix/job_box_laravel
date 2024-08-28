@@ -37,7 +37,7 @@ class CollegePageController extends BaseController
     public function create($college){
         $this->pageTitle(trans('packages/page::pages.create'));
 
-        return PageForm::create($college)->renderForm();
+        return PageForm::create()->renderForm();
     }
 
 }
