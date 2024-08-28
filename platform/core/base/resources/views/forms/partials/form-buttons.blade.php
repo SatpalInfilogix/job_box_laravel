@@ -3,6 +3,9 @@
 @endphp
 
 <div class="btn-list">
+    @if (Route::is('companies.edit'))
+        <a href="#" class="btn btn-primary">Add new page</a>
+    @endif
     <x-core::button
         type="submit"
         value="apply"
