@@ -5,7 +5,14 @@
 <div class="btn-list">
     {{ request()->route('id') }}
     @if (Route::is('companies.edit'))
-        <a href="#" class="btn btn-primary">Add new page</a>
+
+    @php
+    $college = request()->route('company');
+    if($college){
+        $college_id = json_decode($college)->id;
+    }
+    @endphp
+        <a href="{{ route('college.pages.create', ['college'=> $college_id]) }}" class="btn btn-primary">Add new page</a>
     @endif
     <x-core::button
         type="submit"
