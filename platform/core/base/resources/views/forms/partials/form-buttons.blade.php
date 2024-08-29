@@ -3,6 +3,7 @@
 @endphp
 
 <div class="btn-list">
+    {{ request()->route('id') }}
     @if (Route::is('companies.edit'))
 
     @php
