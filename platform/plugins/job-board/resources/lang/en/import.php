@@ -18,6 +18,6 @@ return [
     'download_excel_file' => 'Download Excel file',
     'downloading' => 'Downloading',
     'company' => [
-        'name' => 'Import Companies',
+        'name' => 'Import Colleges',
     ],
 ];

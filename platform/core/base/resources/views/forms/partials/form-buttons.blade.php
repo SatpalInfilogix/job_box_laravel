@@ -3,6 +3,7 @@
 @endphp
 
 <div class="btn-list">
+    {{ request()->route('id') }}
     @if (Route::is('companies.edit'))
         <a href="#" class="btn btn-primary">Add new page</a>
     @endif
