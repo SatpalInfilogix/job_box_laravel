@@ -6,8 +6,11 @@ use Botble\Base\Http\Controllers\BaseController;
 use Botble\Base\Supports\Breadcrumb;
 use Botble\Page\Forms\CollegePageForm;
 use Botble\Page\Tables\CollegePageTable;
+use Botble\Page\Models\CollegePage;
 use Botble\Page\Http\Requests\PageRequest;
+use Botble\Page\Tables\PageTable;
 use Illuminate\Support\Facades\Auth;
+
 
 class CollegePageController extends BaseController
 {
@@ -19,10 +22,9 @@ class CollegePageController extends BaseController
 
     public function index(CollegePageTable $pageTable, $college)
     {      
-        $pageTable->setCollege($college);
-        $pageTable->setup();
+       // $pageTable->setCollege($college);
+        //$pageTable->setup();
         $this->pageTitle(trans('plugins/job-board::college.name'));
-
         return $pageTable->renderTable();
     }
 
@@ -50,5 +52,35 @@ class CollegePageController extends BaseController
             ->setPreviousRoute('college.pages.index', ['college' => $college])
             ->setNextRoute('college.pages.index', ['college' => $college])
             ->withCreatedSuccessMessage();
+    }
+    public function edit($college, $page)
+    {
+        $collegePage = CollegePage::findOrFail($page);
+        $this->pageTitle(trans('Edit College Page'));
+        return CollegePageForm::createFromModel($collegePage)->renderForm();
+    }
+    public function update(PageRequest $request, $college, $page)
+    {
+        $collegePage = CollegePage::findOrFail($page);
+    
+        $form = CollegePageForm::createFromModel($collegePage)
+            ->setRequest($request);
+    
+        $form->save();
+    
+        return $this
+            ->httpResponse()
+            ->setPreviousRoute('college.pages.index', ['college' => $college])
+            ->withUpdatedSuccessMessage();
+    }
+    public function destroy($college, $page)
+    {
+        $collegePage = CollegePage::findOrFail($page);
+        $collegePage->delete();
+
+        return $this
+            ->httpResponse()
+            ->setPreviousRoute('college.pages.index', ['college' => $college])
+            ->withDeletedSuccessMessage();
     }
 }

@@ -210,9 +210,8 @@ AdminHelper::registerRoutes(function () {
 
         });
 
-        Route::group(['prefix' => 'colleges/{college}/pages', 'as' => 'college.pages.'], function ($college) {
-            // Create pages for colleges
-            Route::resource('', 'CollegePageController')->parameters(['pages' => 'page']);
+        Route::group(['prefix' => 'colleges/{college}/pages', 'as' => 'college.pages.'], function () {
+            Route::resource('', 'CollegePageController')->parameters(['' => 'page']);
         });
         
 
