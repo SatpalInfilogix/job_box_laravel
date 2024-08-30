@@ -15,6 +15,7 @@ use Botble\Table\Columns\FormattedColumn;
 use Botble\Table\Columns\IdColumn;
 use Botble\Table\Columns\ImageColumn;
 use Botble\Table\Columns\NameColumn;
+use Botble\Table\Columns\PagesColumn;
 use Botble\Table\Columns\StatusColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
@@ -62,7 +63,7 @@ class CompanyTable extends TableAbstract
             IdColumn::make(),
             ImageColumn::make('logo')
                 ->title(__('Logo')),
-            NameColumn::make()->route('companies.edit'),
+            NameColumn::make(),
             FormattedColumn::make('unique_id')
                 ->getValueUsing(function (FormattedColumn $column) {
                     $item = $column->getItem();
@@ -72,6 +73,7 @@ class CompanyTable extends TableAbstract
                 ->title(trans('plugins/job-board::job-board.form.unique_id'))
                 ->alignLeft(),
             CreatedAtColumn::make(),
+            //PagesColumn::make(),
             StatusColumn::make(),
         ];
     }
