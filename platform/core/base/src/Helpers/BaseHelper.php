@@ -535,6 +535,7 @@ class BaseHelper
     }
 
     public function getHomepageUrl()
+    
     {
         return apply_filters('cms_homepage_url', rescue(fn () => route('public.index'), report: false));
     }

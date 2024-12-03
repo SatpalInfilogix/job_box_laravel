@@ -15,7 +15,7 @@ class ExportCompanyController extends BaseController
     protected function breadcrumb(): Breadcrumb
     {
         return parent::breadcrumb()
-            ->add(trans('plugins/job-board::company.name'), route('companies.index'));
+            ->add(trans('Colleges'), route('companies.index'));
     }
 
     public function index()
